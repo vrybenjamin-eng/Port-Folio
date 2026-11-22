@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}{{ p.titre }} – {{ profil.prenom }} {{ profil.nom }}{% endblock %}
+{% block content %}
+<main class="section projet">
+  <a class="back" href="{{ url_for('index') }}#projets">← Retour au portfolio</a>
+  {% if p.phare %}<span class="tag">Projet phare</span>{% endif %}
+  <h1>{{ p.titre }}</h1>
+  <p class="lead">{{ p.resume }}</p>
+  {% if p.captures and exists(p.captures[0]) %}<img class="shot big" src="{{ asset(p.captures[0]) }}" alt="Capture principale">{% endif %}
+  <div class="grid">
+    <div class="card"><b>Rôle</b><span>{{ p.role }}</span></div>
+    <div class="card"><b>Durée</b><span>{{ p.duree }}</span></div>
+    <div class="card"><b>Stack</b><div class="tags">{% for s in p.stack %}<span class="tag">{{ s }}</span>{% endfor %}</div></div>
+  </div>
+  <div class="grid">
+    <div class="card"><h3>Problème</h3><p>{{ p.probleme }}</p></div>
+    <div class="card"><h3>Solution</h3><p>{{ p.solution }}</p></div>
+    <div class="card phare"><h3>Choix technique clé</h3><p>{{ p.choix_technique }}</p></div>
+  </div>
+  {% if p.captures|length > 1 %}
+  <div class="grid">{% for c in p.captures[1:] %}
+    {% if exists(c) %}<img class="shot" src="{{ asset(c) }}" alt="Capture {{ loop.index + 1 }}">{% endif %}{% endfor %}</div>
+  {% endif %}
+  {% set vids = [] %}{% for v in p.videos %}{% if exists(v) %}{% set _ = vids.append(v) %}{% endif %}{% endfor %}
+  {% if vids %}
+  <h2>Vidéos</h2>
+  <div class="grid">{% for v in vids %}
+    <video class="shot video" controls preload="metadata" src="{{ url_for('static', filename=v) }}"></video>{% endfor %}</div>
+  {% endif %}
+  <div class="actions">
+    {% if p.demo %}<a class="btn btn-gold" href="{{ p.demo }}" target="_blank" rel="noopener">Voir la démo</a>{% endif %}
+    {% if p.code %}<a class="btn btn-line" href="{{ p.code }}" target="_blank" rel="noopener">Code source</a>{% endif %}
+  </div>
+</main>
+{% endblock %}

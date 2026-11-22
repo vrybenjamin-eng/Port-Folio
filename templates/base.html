@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ profil.prenom }} {{ profil.nom }} –BENJAMINVRYTravailleurResilient{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="nav">
+    <a class="logo" href="{{ url_for('index') }}">{{ profil.prenom }} {{ profil.nom }}</a>
+    <nav>
+      <a href="{{ url_for('index') }}#intro">Intro</a>
+      <a href="{{ url_for('index') }}#projets">Projets</a>
+      <a href="{{ url_for('index') }}#cv">CV</a>
+      <a href="{{ url_for('index') }}#contact">Contact</a>
+    </nav>
+  </header>
+  {% block content %}{% endblock %}
+</body>
+</html>

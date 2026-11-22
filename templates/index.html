@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="intro" class="hero">
+  <div class="hero-text">
+    <span class="tag">{{ profil.metier }}</span>
+    <h1>VRY BENJAMIN<br>Travailleur Resilient<span class="gold">.</span></h1>
+    <p class="mono">{{ profil.prenom }} {{ profil.nom }}</p>
+    <p class="lead">{{ profil.intro }}</p>
+    <div class="actions">
+      <a class="btn btn-gold" href="#projets">Voir mes projets</a>
+      <a class="btn btn-line" href="#contact">Me contacter</a>
+    </div>
+  </div>
+  <div class="photo">
+    <div class="circle"></div><div class="stripes"></div>
+    <img src="{{ asset(profil.photo) }}" alt="Photo de {{ profil.prenom }}">
+  </div>
+</section>
+
+<section id="projets" class="section">
+  <h2>Projets</h2>
+  <div class="grid">
+    {% for p in projets %}
+    <a class="card {{ 'phare' if p.phare }}" href="{{ url_for('projet', slug=p.slug) }}">
+      {% if p.captures and exists(p.captures[0]) %}<img class="shot" src="{{ asset(p.captures[0]) }}" alt="Capture de {{ p.titre }}">{% endif %}
+      {% if p.phare %}<span class="tag">★ Projet phare</span>{% endif %}
+      <h3>{{ p.titre }}</h3>
+      <p>{{ p.resume }}</p>
+      <span class="more">Voir le projet →</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="cv" class="section">
+  <div class="row"><h2>CV</h2>
+    <a class="btn btn-line" href="{{ url_for('static', filename=profil.cv_pdf) }}" download>Télécharger le CV (PDF)</a></div>
+  <div class="grid">
+    <div class="card"><h3>Formation</h3>
+      {% for f in cv.formation %}<p>{{ f.titre }} · {{ f.lieu }} · {{ f.annee }}</p>{% endfor %}</div>
+    <div class="card"><h3>Expérience</h3>
+      {% for e in cv.experience %}<p>{{ e.titre }} · {{ e.lieu }} · {{ e.annee }}</p>{% endfor %}</div>
+    <div class="card"><h3>Compétences</h3>
+      {% for cat, items in cv.competences.items() %}<p class="mono">{{ cat }}</p>
+      <div class="tags">{% for c in items %}<span class="tag">{{ c }}</span>{% endfor %}</div>{% endfor %}</div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <h2>Contact</h2>
+  <div class="card contact">
+    <a href="mailto:{{ profil.email }}">✉ {{ profil.email }}</a>
+    <a href="tel:{{ profil.telephone }}">☎ {{ profil.telephone }}</a>
+    <a href="{{ profil.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="{{ profil.github }}" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</section>
+{% endblock %}
