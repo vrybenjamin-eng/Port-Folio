@@ -40,3 +40,22 @@ a.card:hover{border-color:var(--gold)}
 @media(max-width:640px){.hero{padding-top:60px}.circle{right:-10px}}
 .video{height:auto;min-height:200px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'JetBrains Mono',monospace;font-size:13px;padding:16px}
 video.video{padding:0;background:#000}
+.hero{flex-wrap:nowrap;gap:48px}
+.hero-text{flex:1;min-width:0}
+.prenom{display:block;font-size:clamp(24px,3.4vw,44px);font-weight:600;letter-spacing:0;line-height:1.2;margin-bottom:8px;color:var(--gold-l)}
+.photo{width:300px}
+@media(max-width:900px){.hero{flex-wrap:wrap}.photo{width:100%;max-width:340px}}
+.hero h1{font-size:clamp(40px,6vw,80px)}
+.nophoto{position:relative;width:100%;height:100%;padding:16px;text-align:center}
+
+/* Photo principale ronde */
+.photo{width:320px;height:320px}
+.photo img,.nophoto{border-radius:50%;object-fit:cover}
+.circle{right:-24px;top:-24px;width:170px;height:170px}
+.stripes{left:-10px;bottom:-10px}
+@media(max-width:900px){.photo{width:300px;max-width:100%;height:300px}}
+
+/* Captures entières, sans coupure */
+.card .shot{height:240px;object-fit:contain;background:#0f2420}
+.shot.big{height:auto;max-height:560px;object-fit:contain;background:#0f2420}
+.projet .grid .shot{height:auto;max-height:520px;object-fit:contain;background:#0f2420}

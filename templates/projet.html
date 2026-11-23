@@ -25,7 +25,7 @@
   {% if vids %}
   <h2>Vidéos</h2>
   <div class="grid">{% for v in vids %}
-    <video class="shot video" controls preload="metadata" src="{{ url_for('static', filename=v) }}"></video>{% endfor %}</div>
+    <video class="shot video" controls preload="metadata" src="{{ asset(v) }}"></video>{% endfor %}</div>
   {% endif %}
   <div class="actions">
     {% if p.demo %}<a class="btn btn-gold" href="{{ p.demo }}" target="_blank" rel="noopener">Voir la démo</a>{% endif %}

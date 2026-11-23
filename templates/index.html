@@ -13,7 +13,7 @@
   </div>
   <div class="photo">
     <div class="circle"></div><div class="stripes"></div>
-    <img src="{{ asset(profil.photo) }}" alt="Photo de {{ profil.prenom }}">
+    {% if exists(profil.photo) %}<img src="{{ asset(profil.photo) }}" alt="Photo de {{ profil.prenom }}">{% else %}<div class="shot nophoto">[ Photo introuvable : vérifie le nom dans projets.py ]</div>{% endif %}
   </div>
 </section>
 
