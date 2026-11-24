@@ -1,3 +1,7 @@
+
+(lien de la vidéo)
+https://github.com/user-attachments/assets/ef2f81bb-b521-48df-9bda-93b55a7bc10e
+
 Mon Portfolio 
 
 Mon portfolio est fais en python
