@@ -4,8 +4,7 @@ from projets import PROFIL, PROJETS, CV
 
 app = Flask(__name__)
 
-# Securite : si un champ manque dans projets.py, on met une valeur par defaut
-# au lieu de faire planter le site.
+# Securite : si un champ manque dans projets.py, on met une valeur par defaut au lieu de faire planter le site.
 DEFAUTS = {
     "titre": "[Titre]", "resume": "", "phare": False, "role": "", "duree": "",
     "stack": [], "probleme": "", "solution": "", "choix_technique": "",
@@ -19,9 +18,9 @@ for _k in ("formation", "experience"):
 CV.setdefault("competences", {})
 
 
-# Cherche le fichier dans static/ puis dans les sous-dossiers usuels,
+# Cherche le fichier dans static
 # pour que "app1.jpeg" marche qu'il soit dans static/ ou static/img/.
-DOSSIERS = ["", "img/", "images/", "videos/", "video/"]
+DOSSIERS = ["", "img/", "images/", "videos/", "video/", "cv/", "docs/"]
 
 
 def resolve(path):

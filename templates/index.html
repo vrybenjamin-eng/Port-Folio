@@ -34,7 +34,10 @@
 
 <section id="cv" class="section">
   <div class="row"><h2>CV</h2>
-    <a class="btn btn-line" href="{{ url_for('static', filename=profil.cv_pdf) }}" download>Télécharger le CV (PDF)</a></div>
+    {% if exists(profil.cv_pdf) %}<div class="actions">
+      <a class="btn btn-gold" href="{{ asset(profil.cv_pdf) }}" target="_blank" rel="noopener">Voir mon CV</a>
+      <a class="btn btn-line" href="{{ asset(profil.cv_pdf) }}" download>Télécharger</a></div>
+    {% else %}<span class="mono">CV introuvable : vérifie le nom du fichier dans projets.py</span>{% endif %}</div>
   <div class="grid">
     <div class="card"><h3>Formation</h3>
       {% for f in cv.formation %}<p>{{ f.titre }} · {{ f.lieu }} · {{ f.annee }}</p>{% endfor %}</div>

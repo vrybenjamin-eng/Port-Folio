@@ -3,7 +3,7 @@ PROFIL = {
     "nom": "VRY",
     "metier": "Développeur web / Reseaux Telecom",
     "intro": "Etudiant en Licence2 en RESEAUX INFORMATIQUE ET TéLéCOMMUNICATION à l'INSTITUT IVOIRIENNE DE TECHNOLOGIE developpeur d'application et réalisateur de projet, passionné par les télécoms et la cybersécurité",
-    "photo": "ma photo.jpg",  # photo noir et blanc dans static/
+    "photo": "ma photo.jpg",  
     "email": "vrybenjamin@gmail.com",
     "telephone": "+225 01 53 53 05 50",
     "linkedin": "https://www.linkedin.com/in/Loba-Josue-Benjamin-VRY",
